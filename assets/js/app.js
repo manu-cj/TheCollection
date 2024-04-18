@@ -483,9 +483,7 @@ header .appendChild(document.createElement('h1'))
 document.querySelector('h1').innerText = 'Incredible movie';
 header.appendChild(document.createElement('p'));
 header.querySelector('p').innerText = "a list the movie incredible, with the big classic";
-header.appendChild(document.createElement('select'));
 const genres = [
-    "Default",
     "Action", 
     "Adventure",
     "Fantasy",
@@ -499,28 +497,46 @@ const genres = [
     "History",
     "Crime",
 ];
+header.appendChild(document.createElement('button'));
+header.appendChild(document.createElement('div'));
+const headerDiv = header.querySelector('div');
 
-const select = document.querySelector('select');
+const button = header.querySelector('button');
+button.className = 'filterButton'
+button.innerText = "filtre";
+
+
+let genre = ""
 for (let j = 0; j < genres.length; j++) {
-    select.appendChild(document.createElement('option'))
-    const option = document.querySelectorAll('option');
-    option[j].text = genres[j];
-    option[j].value = genres[j];
+    checkbox = document.createElement('input')
+    checkbox.value = genres[j]
+    checkbox.type = "checkbox";
+    let label = document.createElement('label');
+    label.textContent = genres[j]
+    headerDiv.appendChild(label);
+    headerDiv.appendChild(checkbox);
+    
+    let check = headerDiv.querySelectorAll('input');
+    check[j].addEventListener('click', () => {
+        genre = check[j].value
+    })
+/*
+Ce servir de la variable genre pour filtrer les films
+*/
+    
+    
 }
 
- select.addEventListener('click', () => {
-    header.style.height = '400px';
-})
-document.addEventListener('click', (event) => {
-    if (event.target !== select) {
-        header.style.height = '150px';
-    } 
+
+
+
+
+ button.addEventListener('click', () => {
+    headerDiv.style.display = "flex";
 })
 window.addEventListener('scroll', () => {
-    header.style.height = '150px';
+    headerDiv.style.display = "none";
 })
-
-
 
 
 
@@ -534,12 +550,12 @@ function createCard() {
     for (let i = 0; i < movies.length; i++) {
         const element = movies[i];
         main.appendChild(document.createElement('article'));
-        const article = document.querySelectorAll('article');
+        const article = main.querySelectorAll('article');
         article[i].appendChild(document.createElement('div'));
-        const div = document.querySelectorAll('div');
+        const div = main.querySelectorAll('div');
 
         div[i].appendChild(document.createElement('button'));
-        const button = document.querySelectorAll('button');
+        const button = main.querySelectorAll('button');
         button[i].innerText = '❌';
         button[i].title = 'delete this movie';
         article[i].addEventListener('mouseover', () => {
@@ -548,14 +564,14 @@ function createCard() {
         article[i].addEventListener('mouseleave', ()=> {
             button[i].style.display = 'none';
         })
-        article[i].addEventListener('click', () => {
+        button[i].addEventListener('click', () => {
             main.remove()
             movies.splice(i, 1);
             console.log(movies);
             createCard();
         })
 
-        const picture = document.querySelectorAll('div');
+        const picture = main.querySelectorAll('div');
         let numberRand = Math.floor(Math.random() * element.Images.length);
         picture[i].style.backgroundImage = 'url('+ element.Images[numberRand] +')';
         article[i].appendChild(document.createElement('p'));

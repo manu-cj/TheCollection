@@ -4,11 +4,33 @@ body {
   color: white;
 }
 body header {
-  height: 150px;
+  height: 250px;
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
 }
-body header select {
-  float: right;
+body header button {
+  width: 50px;
+  position: relative;
+  left: 40%;
   margin-right: 30px;
+}
+body header div {
+  width: 50%;
+  display: none;
+  flex-direction: row;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: center;
+  align-content: center;
+  margin: 10px;
+}
+body header div input {
+  margin-right: 30px;
+}
+body header div button {
+  width: 50px;
 }
 body main {
   display: flex;

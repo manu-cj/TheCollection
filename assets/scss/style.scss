@@ -3,10 +3,32 @@ body {
     background-color: rgb(46, 46, 46);
     color: white;
     header {
-        height: 150px;
-        select{
-            float: right;
+        height: 250px;
+        display: flex;
+        flex-direction: column;
+        justify-content: center;
+        align-items: center;
+        button{
+            width: 50px;
+            position: relative;
+            left: 40%;
             margin-right: 30px;
+        }
+        div {
+            width: 50%;
+            display: none;
+            flex-direction: row;
+            flex-wrap: wrap;
+            align-items: center;
+            justify-content: center;
+            align-content: center;
+            margin: 10px;
+            input {
+                margin-right: 30px;
+            }
+            button {
+                width: 50px;
+            }
         }
     }
     main {
