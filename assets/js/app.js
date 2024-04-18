@@ -483,35 +483,89 @@ header .appendChild(document.createElement('h1'))
 document.querySelector('h1').innerText = 'Incredible movie';
 header.appendChild(document.createElement('p'));
 header.querySelector('p').innerText = "a list the movie incredible, with the big classic";
+header.appendChild(document.createElement('select'));
+const genres = [
+    "Default",
+    "Action", 
+    "Adventure",
+    "Fantasy",
+    "Drama",
+    "Horror",
+    "Thriller",
+    "Biography", 
+    "Comedy",
+    "Sci-Fi",
+    "Adventure",
+    "History",
+    "Crime",
+];
+
+const select = document.querySelector('select');
+for (let j = 0; j < genres.length; j++) {
+    select.appendChild(document.createElement('option'))
+    const option = document.querySelectorAll('option');
+    option[j].text = genres[j];
+    option[j].value = genres[j];
+}
+
+ select.addEventListener('click', () => {
+    header.style.height = '400px';
+})
+document.addEventListener('click', (event) => {
+    if (event.target !== select) {
+        header.style.height = '150px';
+    } 
+})
+window.addEventListener('scroll', () => {
+    header.style.height = '150px';
+})
 
 
-body.appendChild(document.createElement('main'));
-let main = body.querySelector('main');
+
+
+
 
 console.log(movies);
 
 
 function createCard() {
+    body.appendChild(document.createElement('main'));
+    const main = body.querySelector('main');
     for (let i = 0; i < movies.length; i++) {
         const element = movies[i];
         main.appendChild(document.createElement('article'));
         const article = document.querySelectorAll('article');
-        article[i].style.width = '20%';
-        article[i].style.border = '2px black solid';
-        article[i].appendChild(document.createElement('figure'));
-        const figure = document.querySelectorAll('figure');
-        figure[i].appendChild(document.createElement('img'));
-        const picture = document.querySelectorAll('img');
-        picture[i].src = element.Images;
-        picture[i].style.width = '100%';
+        article[i].appendChild(document.createElement('div'));
+        const div = document.querySelectorAll('div');
+
+        div[i].appendChild(document.createElement('button'));
+        const button = document.querySelectorAll('button');
+        button[i].innerText = '❌';
+        button[i].title = 'delete this movie';
+        article[i].addEventListener('mouseover', () => {
+            button[i].style.display = 'inline';
+        })
+        article[i].addEventListener('mouseleave', ()=> {
+            button[i].style.display = 'none';
+        })
+        article[i].addEventListener('click', () => {
+            main.remove()
+            movies.splice(i, 1);
+            console.log(movies);
+            createCard();
+        })
+
+        const picture = document.querySelectorAll('div');
+        let numberRand = Math.floor(Math.random() * element.Images.length);
+        picture[i].style.backgroundImage = 'url('+ element.Images[numberRand] +')';
         article[i].appendChild(document.createElement('p'));
         article[i].querySelector('p').innerText = element.Genre;
         article[i].appendChild(document.createElement('h2'));
         article[i].querySelector('h2').innerText = element.Title;
         article[i].appendChild(document.createElement('h4'));
         article[i].querySelector('h4').innerText = element.Director;
-        article[i].appendChild(document.createElement('details'));
-        article[i].querySelector('details').innerText = element.Plot;
+        article[i].appendChild(document.createElement('cite'));
+        article[i].querySelector('cite').innerText = element.Plot;
 
 
         
