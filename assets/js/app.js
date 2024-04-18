@@ -507,6 +507,7 @@ button.innerText = "filtre";
 
 
 let genre = ""
+let filterToggle = 0
 for (let j = 0; j < genres.length; j++) {
     checkbox = document.createElement('input')
     checkbox.value = genres[j]
@@ -518,7 +519,8 @@ for (let j = 0; j < genres.length; j++) {
     
     let check = headerDiv.querySelectorAll('input');
     check[j].addEventListener('click', () => {
-        genre = check[j].value
+        genre = check[j].value;
+        filterToggle = 1;
     })
 /*
 Ce servir de la variable genre pour filtrer les films
@@ -529,14 +531,19 @@ Ce servir de la variable genre pour filtrer les films
 
 
 
-
-
- button.addEventListener('click', () => {
-    headerDiv.style.display = "flex";
+button.addEventListener('click', () => {
+    if (filterToggle === 0) {
+        headerDiv.style.opacity = "1";
+        filterToggle = 1;   
+    }
+    else {
+        headerDiv.style.opacity = "0";
+            filterToggle = 0; 
+    }
 })
-window.addEventListener('scroll', () => {
-    headerDiv.style.display = "none";
-})
+
+ 
+
 
 
 
