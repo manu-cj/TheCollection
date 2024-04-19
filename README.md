@@ -5,6 +5,7 @@
 
 <h3 style="text-align: left;">Added functionality :</h3>
 <p style="text-align: left;">I added the possibility of deleting the cards<p>
+<a href="https://manu-cj.github.io/TheCollection/">Show project</a> 
 
 <h3 style="text-align: left;">Example :</h3>
 <img src="assets/collection_card.png" alt="Je suis un bel homme" title="Je suis un bel homme">
