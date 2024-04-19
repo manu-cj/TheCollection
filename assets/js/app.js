@@ -481,74 +481,8 @@ body.appendChild(document.createElement("header"));
 const header = document.querySelector('header');
 header .appendChild(document.createElement('h1'))
 document.querySelector('h1').innerText = 'Incredible movie';
-header.appendChild(document.createElement('p'));
-header.querySelector('p').innerText = "a list the movie incredible, with the big classic";
-const genres = [
-    "Action", 
-    "Adventure",
-    "Fantasy",
-    "Drama",
-    "Horror",
-    "Thriller",
-    "Biography", 
-    "Comedy",
-    "Sci-Fi",
-    "Adventure",
-    "History",
-    "Crime",
-];
-header.appendChild(document.createElement('button'));
-header.appendChild(document.createElement('div'));
-const headerDiv = header.querySelector('div');
-
-const button = header.querySelector('button');
-button.className = 'filterButton'
-button.innerText = "filtre";
 
 
-let genre = ""
-let filterToggle = 0
-for (let j = 0; j < genres.length; j++) {
-    checkbox = document.createElement('input')
-    checkbox.value = genres[j]
-    checkbox.type = "checkbox";
-    let label = document.createElement('label');
-    label.textContent = genres[j]
-    headerDiv.appendChild(label);
-    headerDiv.appendChild(checkbox);
-    
-    let check = headerDiv.querySelectorAll('input');
-    check[j].addEventListener('click', () => {
-        genre = check[j].value;
-        filterToggle = 1;
-    })
-/*
-Ce servir de la variable genre pour filtrer les films
-*/
-    
-    
-}
-
-
-
-button.addEventListener('click', () => {
-    if (filterToggle === 0) {
-        headerDiv.style.opacity = "1";
-        filterToggle = 1;   
-    }
-    else {
-        headerDiv.style.opacity = "0";
-            filterToggle = 0; 
-    }
-})
-
- 
-
-
-
-
-
-console.log(movies);
 
 
 function createCard() {
@@ -572,10 +506,9 @@ function createCard() {
             button[i].style.display = 'none';
         })
         button[i].addEventListener('click', () => {
-            main.remove()
-            movies.splice(i, 1);
-            console.log(movies);
-            createCard();
+          main.remove()
+          movies.splice(i, 1);
+          createCard();  
         })
 
         const picture = main.querySelectorAll('div');
@@ -583,6 +516,10 @@ function createCard() {
         picture[i].style.backgroundImage = 'url('+ element.Images[numberRand] +')';
         article[i].appendChild(document.createElement('p'));
         article[i].querySelector('p').innerText = element.Genre;
+        article[i].querySelector('p').style.backgroundColor = "#F66B0E";
+        article[i].querySelector('p').style.width = '30%';
+        article[i].querySelector('p').style.margin = '10px';
+        article[i].querySelector('p').style.borderRadius = '5px'
         article[i].appendChild(document.createElement('h2'));
         article[i].querySelector('h2').innerText = element.Title;
         article[i].appendChild(document.createElement('h4'));
@@ -590,10 +527,19 @@ function createCard() {
         article[i].appendChild(document.createElement('cite'));
         article[i].querySelector('cite').innerText = element.Plot;
 
+        article[i].addEventListener('mouseover', () => {
+          article[i].style.border = '2px #F66B0E solid';
+        })
+        article[i].addEventListener('mouseleave', () => {
+          article[i].style.border = '1px #EFEFEF solid';
+        })
+
 
         
     }
     
 }
+
+
 
 createCard()

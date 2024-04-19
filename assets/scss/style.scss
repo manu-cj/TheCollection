@@ -1,80 +1,126 @@
+* {
+    margin: 0;
+    box-sizing: border-box;
+}
+
 body {
     text-align: center;
-    background-color: rgb(46, 46, 46);
+    background-color: #112B3C;
     color: white;
-    header {
-        height: 300px;
-        display: flex;
-        flex-direction: column;
-        justify-content: center;
-        align-items: center;
-        button{
-            width: 50px;
-            position: relative;
-            left: 40%;
-            margin-right: 30px;
-        }
-        div {
-            width: 50%;
-            opacity: 0;
-            display: flex;
-            flex-direction: row;
-            flex-wrap: wrap;
-            align-items: center;
-            justify-content: center;
-            align-content: center;
-            margin: 10px;
-            input {
-                margin-right: 30px;
-            }
-            button {
-                width: 50px;
-            }
-        }
-    }
-    main {
-        display: flex;
-        flex-direction: row;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-        gap: 30px;
-        row-gap: 50px;
-        article {
-            width: 20%;
-            height: 450px;
-            border: 2px black solid;
-            color: rgb(46, 46, 46);
-            
-            background-color: rgba(228, 232, 232, 0.87);
-            border-radius: 5px;
-            button {
-                position: relative;
-                left: 45%;
-                z-index: 3;
-                background-color: transparent;
-                border: none;
-                color: tomato;
-                cursor: pointer;
-                display:none;
-            }
-            div {
-                width: 100%;
-                height: 40%;
-                background-position: center;
-                background-size: cover;
-                background-repeat: no-repeat;
-                border-radius: 5px;
-            }
-
-            cite {
-                display: block;
-                padding: 15px;
-                font-size: 90%;
-            }
-            
-            
-        }
-    }
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    align-content: center;
+  header {
+    width: 100%;
+    height: 100px;
+    margin-bottom: 50px;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
     
+    color: #EFEFEF;
+    div {
+      width: 50%;
+      opacity: 0;
+      display: flex;
+      flex-direction: row;
+      flex-wrap: wrap;
+      align-items: center;
+      justify-content: center;
+      align-content: center;
+      margin: 10px;
+      input {
+        margin-right: 30px;
+      }
+    }
+  }
+  main {
+    width: 100%;
+    padding-left: 10%;
+    position: relative;
+    z-index: 0;
+    display: flex;
+    flex-direction: row;
+    flex-wrap: wrap;
+    justify-content: start;
+    align-items: center;
+    gap: 30px;
+
+    article {
+      width: 20%;
+      height: 450px;
+      color: #EFEFEF ;
+      border: 1px #EFEFEF solid;
+      background-color:#205375;
+      border-radius: 10px;
+      overflow: hidden;
+      transition: all ease-in-out 1s;
+
+      button {
+        position: relative;
+        left: 45%;
+        z-index: 3;
+        background-color: transparent;
+        border: none;
+        color: tomato;
+        cursor: pointer;
+        display: none;
+      }
+      div {
+        width: 100%;
+        height: 40%;
+        background-position: center;
+        background-size: cover;
+        background-repeat: no-repeat;
+        border-radius: 10px;
+      }
+
+      cite {
+        display: block;
+        padding: 15px;
+        font-size: 90%;
+      }
+    }
+  }
+}
+
+@media screen and (max-width: 700px) {
+    body {
+
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+            
+        
+            article {
+                display: block;
+                width: 90%;
+                height: 450px;
+            }
+        }
+    }
+
+}
+
+@media screen and (min-width: 700px) and (max-width: 1024px) {
+    body {
+        main {
+            display: flex;
+            flex-direction: column;
+            padding: 0;
+        }
+        article {
+            display: block;
+            width: 90% !important;
+            height: 600px !important;
+            margin: 5% !important;
+            div {
+                height: 60% !important;
+            }
+        }
+    }
 }
